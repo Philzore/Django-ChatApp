@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h1>Login</h1>
+    </div>
+    <div  class="mdl-card__supporting-text">
+        <p id="wrongLogin" class="wrong-login d-none">Login Daten sind Falsch!</p>
+    </div>
+    <div class="mdl-card__actions">
+        <form onsubmit="login('{{csrf_token}}'); return false" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="redirect" value="{{redirect}}">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input id="userName" class="mdl-textfield__input" type="text" name="username">
+                <label class="mdl-textfield__label" for="sample3">Name...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input id="userPassword" class="mdl-textfield__input" type="password" name="userpassword">
+                <label class="mdl-textfield__label" for="sample3">Password...</label>
+            </div>
+            <div class="btn-login">
+                <button id="loginBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Login</button>
+                <div id="loginSpinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active d-none"></div>
+                <a href="{% url 'register' %}"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" 
+                type="button">Sign Up</button></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

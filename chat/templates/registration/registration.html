@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h1>Registration</h1>
+    </div>
+
+    <div class="mdl-card__actions">
+        <form onsubmit="register('{{csrf_token}}'); return false" method="post">
+            {% csrf_token %}
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="text" name="username" id="registerName">
+                <label class="mdl-textfield__label" for="registerName">User Name...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="text" name="userfirstname"
+                    id="registerFirstName">
+                <label class="mdl-textfield__label" for="userfirstname">First Name...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="text" name="userlastname" id="registerLastName">
+                <label class="mdl-textfield__label" for="registerLastName">Last Name...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="email" name="useremail" id="registerEmail">
+                <label class="mdl-textfield__label" for="registerEmail">Email...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="password" name="userpassword"
+                    id="registerPassword">
+                <label class="mdl-textfield__label" for="userpassword">Password...</label>
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input required class="mdl-textfield__input" type="password" name="userpasswordconfirm"
+                    id="registerPasswordConfirm">
+                <label class="mdl-textfield__label" for="userpasswordconfirm">Confirm Password...</label>
+            </div>
+
+            <span id="wrongConf" class="wrong-login d-none">Passwords are not the same</span>
+            <span id="userExist" class="wrong-login d-none">Benutzer existiert bereits</span>
+
+            <div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    type="submit" id="registerBtn">Create
+                    Account
+                </button>
+                <div id="registerSpinner" class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active d-none">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

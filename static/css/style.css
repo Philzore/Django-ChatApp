@@ -1,0 +1,48 @@
+.main-window {
+    display: flex;
+    justify-content: center;
+}
+
+.page-content {
+    padding: 100px 100px;
+}
+
+.color-gray {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.color-red {
+    color: red;
+}
+
+.wrong-login {
+    color: red;
+}
+
+.btn-login {
+    display: flex !important;
+    justify-content: space-around !important;
+}
+
+.message-container {
+    border: 0.5px solid;
+    border-radius: 10px;
+    padding: 15px;
+    max-height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+.show-left {
+    display: flex;
+}
+
+.show-right {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.d-none {
+    display: none;
+}

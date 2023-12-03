@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+<div class="message-container" id="messageContainer">
+    {% for message in messages %}
+    {% if message.author == request.user %}
+    <div class="show-right">
+        <span class="color-gray">[{{message.created_at}}]</span>
+        <span><b>{{message.author}}: </b> {{message.text}}</span>
+    </div>
+    <hr>
+    {% else %}
+    <div class="show-left">
+        <span class="color-gray">[{{message.created_at}}]</span>
+        <span><b>{{message.author}}: </b> {{message.text}}</span>
+    </div>
+    <hr>
+    {% endif %}
+    {% endfor %}
+</div>
+
+<form onsubmit="sendMessage('{{csrf_token}}' , '{{request.user}}'); return false" method="post">
+    {% csrf_token %}
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="messageField" name="textmessage">
+        <label class="mdl-textfield__label" for="messageField">Text...</label>
+    </div>
+
+    <!-- Accent-colored raised button with ripple -->
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        Send
+    </button>
+
+</form>
+
+{% else %}
+<h1>Nicht eingeloggt</h1>
+<p>Bitte einloggen. <br>Klick <a href="/login/">hier</a></p>
+{% endif %}
+
+
+{% endblock %}
